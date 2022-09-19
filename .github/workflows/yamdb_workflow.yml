@@ -44,10 +44,11 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2  
         with:
-          file: infra/
           push: true
           tags: insomniatso/yamdb_final
-  
+          context: infra
+          file: infra/Dockerfile
+         
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
