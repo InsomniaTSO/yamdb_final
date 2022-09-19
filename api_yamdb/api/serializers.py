@@ -7,7 +7,6 @@ from django.shortcuts import get_object_or_404
 from rest_framework import exceptions, serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.settings import api_settings
-
 from reviews.models import Category, Comment, Genre, Review, Title
 from users.models import User
 

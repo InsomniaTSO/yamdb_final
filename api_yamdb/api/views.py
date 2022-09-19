@@ -1,26 +1,23 @@
-from django.db.models import Avg
+from api.mixins import CustomGenreCategoryViewSet, CustomTitleViewSet
+from api.permissions import (IsAdmin, IsAdminOrReadOnly, IsSelfOrAdmin,
+                             ReadOnlyForUnauthorized)
+from api.serializers import (CategorySerializer, CommentSerializer,
+                             GenreSerializer, ReviewSerializer,
+                             SignupSerializer, TitleReadSerializer,
+                             TitleSerializer, TokenSerializer, UserSerializer)
 from django.core.mail import send_mail
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import (filters, generics, permissions, status,
-                            viewsets)
+from rest_framework import filters, generics, permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from reviews.filter import TitleFilter
 from reviews.models import Category, Genre, Review, Title
 from users.models import User
-from reviews.filter import TitleFilter
-from api.permissions import (IsAdmin, IsAdminOrReadOnly, IsSelfOrAdmin,
-                             ReadOnlyForUnauthorized)
-from api.serializers import (CategorySerializer, CommentSerializer,
-                             GenreSerializer, ReviewSerializer,
-                             SignupSerializer,
-                             TitleReadSerializer, TitleSerializer,
-                             TokenSerializer, UserSerializer)
-from api.mixins import CustomGenreCategoryViewSet, CustomTitleViewSet
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
@@ -55,12 +52,11 @@ class CommentsViewSet(viewsets.ModelViewSet):
 
     def review_object(self):
         title = get_object_or_404(Title, id=self.kwargs.get('title_id'))
-        review = get_object_or_404(
+        return get_object_or_404(
             Review,
             title=title,
             id=self.kwargs.get('review_id')
         )
-        return review
 
     def get_queryset(self):
         review = self.review_object()
