@@ -46,7 +46,7 @@ jobs:
         with:
           push: true
           tags: insomniatso/yamdb_final
-          file: ../infra/Dockerfile
+          file: api_yamdb/Dockerfile
          
   deploy:
     runs-on: ubuntu-latest
