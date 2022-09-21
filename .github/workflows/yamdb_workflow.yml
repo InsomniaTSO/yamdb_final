@@ -43,11 +43,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2  
-        with:
-          context: 
+        with: 
           push: true
           tags: insomniatso/yamdb_final:latest
-          path: ./api_yamdb
+          context: ./api_yamdb
          
   deploy:
     runs-on: ubuntu-latest
