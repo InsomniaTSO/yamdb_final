@@ -14,9 +14,14 @@ API для оценки произведений (фильмов, книг, иг
 
 ## __Технологии__:
 
-Django REST framework,
-Simple JWT,
-Docker.
+* [Python](https://www.python.org/)
+* [Django](https://www.djangoproject.com/)
+* [Django REST framework](https://www.django-rest-framework.org/)
+* [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Docker](https://www.docker.com/)
+* [Gunicorn](https://gunicorn.org/)
+* [Nginx](https://nginx.org/)
 
 ### __Шаблон наполнения env-файла__:
 
@@ -35,7 +40,7 @@ SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxx # секретный ключ из settings.py
 Регистрация пользователя:
 
 ```
-POST http://127.0.0.1:8000/api/v1/auth/signup/
+POST http://insomniatso.sytes.net/api/v1/auth/signup/
 {
 "email": "string",
 "username": "string"
@@ -46,7 +51,7 @@ POST http://127.0.0.1:8000/api/v1/auth/signup/
 Получение токена:
 
 ```
-POST http://127.0.0.1:8000/api/v1/auth/token/
+POST http://insomniatso.sytes.net/api/v1/auth/token/
 {
 "confirmation_code": "string",
 "username": "string"
@@ -56,7 +61,7 @@ POST http://127.0.0.1:8000/api/v1/auth/token/
 Дополнение или изменение данных пользователя:
 
 ```
-PATCH http://127.0.0.1:8000/api/v1/users/me/
+PATCH http://insomniatso.sytes.net/api/v1/users/me/
 {
 "username": "string",
 "email": "user@example.com",
@@ -69,9 +74,13 @@ PATCH http://127.0.0.1:8000/api/v1/users/me/
 Оставить отзыв с оценкой:
 
 ```
-POST http://127.0.0.1:8000/api/v1/titles/{title_id}/reviews/
+POST http://insomniatso.sytes.net/api/v1/titles/{title_id}/reviews/
 {
 "text": "string",
 "score": 1
 }
 ```
+
+## Ссылки
+
+Проект доступен по ссылке <http://insomniatso.sytes.net/>
