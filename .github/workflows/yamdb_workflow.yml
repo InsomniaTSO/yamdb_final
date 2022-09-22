@@ -61,6 +61,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker pull insomniatso/yamdb_final:latest
+            sudo systemctl stop nginx
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
